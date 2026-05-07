@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acadelitas - Mi perfil</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><a href="dashboard.html">Acadelitas</a></div>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-user">
+            <span id="navUsername"></span>
+            <span id="navRol" class="badge"></span>
+            <button onclick="salir()" class="btn btn-sm">Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-title">Mi perfil</h2>
+
+        <div class="card" id="datosPerfil" style="padding: 1.5rem;">
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <script src="../js/funciones.js"></script>
+    <script src="../js/mi_perfil.js"></script>
+</body>
+</html>

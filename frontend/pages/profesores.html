@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acadelitas - Profesores</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><a href="dashboard.html">Acadelitas</a></div>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-user">
+            <span id="navUsername"></span>
+            <button onclick="salir()" class="btn btn-sm">Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Profesores</h2>
+            <button class="btn btn-primary" id="btnNuevoProfesor">+ Nuevo Profesor</button>
+        </div>
+
+        <input type="text" class="buscador-tabla" id="buscador" placeholder="Buscar profesor..." oninput="buscar(this.value)">
+
+        <div class="table-container">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Especialidad</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyProfesores"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="modalProfesor" style="display:none">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalProfesorTitle">Nuevo Profesor</h3>
+                <button class="modal-close" onclick="cerrarModal('modalProfesor')">&times;</button>
+            </div>
+            <form id="formProfesor">
+                <input type="hidden" id="profesorId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="profesorNombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" id="profesorApellidos" required>
+                    </div>
+                    <div class="form-group">
+                        <label>DNI</label>
+                        <input type="text" id="profesorDni">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="text" id="profesorTelefono">
+                    </div>
+                    <div class="form-group">
+                        <label>Especialidad</label>
+                        <input type="text" id="profesorEspecialidad">
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="profesorEstado">
+                            <option value="ACTIVO">Activo</option>
+                            <option value="INACTIVO">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="profesorEmail">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" onclick="cerrarModal('modalProfesor')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal DNI duplicado -->
+    <div class="modal" id="modalDniDuplicado" style="display:none">
+        <div class="modal-content" style="max-width:420px;text-align:center">
+            <div style="padding:1.5rem">
+                <div style="font-size:3rem;margin-bottom:0.5rem">⚠️</div>
+                <h3 style="color:var(--danger);margin-bottom:0.5rem">DNI duplicado</h3>
+                <p style="color:var(--text-light);margin-bottom:1rem">
+                    Ese DNI ya está registrado en otro profesor.
+                </p>
+                <button class="btn btn-primary" onclick="cerrarModal('modalDniDuplicado')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/funciones.js"></script>
+    <script src="../js/profesores.js"></script>
+</body>
+</html>

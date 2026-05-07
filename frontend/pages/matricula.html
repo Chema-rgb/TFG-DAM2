@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acadelitas - Matrículas</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><a href="dashboard.html">Acadelitas</a></div>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-user">
+            <span id="navUsername"></span>
+            <button onclick="salir()" class="btn btn-sm">Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Matrículas</h2>
+            <button class="btn btn-primary" id="btnNuevaMatricula">+ Nueva Matrícula</button>
+        </div>
+
+        <div class="table-container">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Alumno</th>
+                        <th>Curso</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyMatriculas"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="modalMatricula" style="display:none">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalMatriculaTitle">Nueva Matrícula</h3>
+                <button class="modal-close" onclick="cerrarModal('modalMatricula')">&times;</button>
+            </div>
+            <form id="formMatricula">
+                <input type="hidden" id="matriculaId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Alumno</label>
+                        <select id="matriculaAlumno" required>
+                            <option value="">Selecciona alumno</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Curso</label>
+                        <select id="matriculaCurso" required>
+                            <option value="">Selecciona curso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="matriculaEstado">
+                            <option value="ACTIVA">Activa</option>
+                            <option value="CANCELADA">Cancelada</option>
+                            <option value="COMPLETADA">Completada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" onclick="cerrarModal('modalMatricula')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Curso Completo -->
+    <div class="modal" id="modalCursoCompleto" style="display:none">
+        <div class="modal-content" style="max-width:400px;text-align:center">
+            <div style="padding:2rem 1.5rem">
+                <div style="font-size:3rem;margin-bottom:1rem">🚫</div>
+                <h3 style="color:var(--danger);margin-bottom:0.75rem">Curso Completo</h3>
+                <p style="color:var(--text-light);margin-bottom:1.5rem">
+                    Este curso ha alcanzado su capacidad máxima.<br>No se pueden añadir más alumnos.
+                </p>
+                <button class="btn btn-primary" onclick="cerrarModal('modalCursoCompleto')">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/funciones.js"></script>
+    <script src="../js/matricula.js"></script>
+</body>
+</html>

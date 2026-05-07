@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acadelitas - Pagos</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <!-- navbar igual que en las otras páginas -->
+    <nav class="navbar">
+        <div class="nav-brand"><a href="dashboard.html">Acadelitas</a></div>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-user">
+            <span id="navUsername"></span>
+            <button onclick="salir()" class="btn btn-sm">Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Pagos</h2>
+            <button class="btn btn-primary" id="btnNuevoPago">+ Registrar Pago</button>
+        </div>
+
+        <div style="margin-bottom:1rem;display:flex;gap:0.5rem">
+            <button class="btn btn-sm" onclick="filtrarPorEstado('TODOS')">Todos</button>
+            <button class="btn btn-sm" onclick="filtrarPorEstado('PENDIENTE')" style="background:#fef3c7;color:#d97706">Pendientes</button>
+            <button class="btn btn-sm" onclick="filtrarPorEstado('VENCIDO')" style="background:#fee2e2;color:#dc2626">Vencidos</button>
+            <button class="btn btn-sm" onclick="filtrarPorEstado('PAGADO')" style="background:#dcfce7;color:#16a34a;border:1px solid #16a34a">Pagados</button>
+            <button class="btn btn-sm" onclick="filtrarPorEstado('CANCELADO')" style="background:#f1f5f9;color:#64748b">Cancelados</button>
+        </div>
+
+        <div class="table-container">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Alumno</th>
+                        <th>Curso</th>
+                        <th>Concepto</th>
+                        <th>Importe</th>
+                        <th>Fecha</th>
+                        <th>Vencimiento</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyPagos"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Pago -->
+    <div class="modal" id="modalPago" style="display:none">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalPagoTitle">Registrar Pago</h3>
+                <button class="modal-close" onclick="cerrarModal('modalPago')">&times;</button>
+            </div>
+            <form id="formPago">
+                <input type="hidden" id="pagoId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Alumno</label>
+                        <select id="pagoAlumno" required>
+                            <option value="">Selecciona alumno</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Curso</label>
+                        <select id="pagoCurso">
+                            <option value="">Sin curso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Concepto</label>
+                        <input type="text" id="pagoConcepto" placeholder="Mensualidad Enero...">
+                    </div>
+                    <div class="form-group">
+                        <label>Importe (€)</label>
+                        <input type="number" id="pagoImporte" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Pago</label>
+                        <input type="date" id="pagoFecha">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Vencimiento</label>
+                        <input type="date" id="pagoVencimiento">
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="pagoEstado">
+                            <option value="PENDIENTE">Pendiente</option>
+                            <option value="PAGADO">Pagado</option>
+                            <option value="VENCIDO">Vencido</option>
+                            <option value="CANCELADO">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-full">
+                        <label>Observaciones</label>
+                        <textarea id="pagoObservaciones" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" onclick="cerrarModal('modalPago')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/funciones.js"></script>
+    <script src="../js/pagos.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acadelitas - Cursos</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><a href="dashboard.html">Acadelitas</a></div>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-user">
+            <span id="navUsername"></span>
+            <button onclick="salir()" class="btn btn-sm">Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Cursos</h2>
+            <button class="btn btn-primary" id="btnNuevoCurso">+ Nuevo Curso</button>
+        </div>
+
+        <div class="table-container">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Nivel</th>
+                        <th>Capacidad</th>
+                        <th>Precio</th>
+                        <th>Profesor</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyCursos"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Curso -->
+    <div class="modal" id="modalCurso" style="display:none">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalCursoTitle">Nuevo Curso</h3>
+                <button class="modal-close" onclick="cerrarModal('modalCurso')">&times;</button>
+            </div>
+            <form id="formCurso">
+                <input type="hidden" id="cursoId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="cursoNombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nivel</label>
+                        <input type="text" id="cursoNivel" placeholder="Básico, Intermedio, Avanzado">
+                    </div>
+                    <div class="form-group">
+                        <label>Capacidad</label>
+                        <input type="number" id="cursoCapacidad" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Precio (€/mes)</label>
+                        <input type="number" id="cursoPrecio" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Profesor</label>
+                        <select id="cursoProfesor">
+                            <option value="">Sin asignar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="cursoEstado">
+                            <option value="ACTIVO">Activo</option>
+                            <option value="INACTIVO">Inactivo</option>
+                            <option value="COMPLETO">Completo</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-full">
+                        <label>Descripción</label>
+                        <textarea id="cursoDescripcion" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" onclick="cerrarModal('modalCurso')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/funciones.js"></script>
+    <script src="../js/cursos.js"></script>
+</body>
+</html>

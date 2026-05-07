@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acadelitas - Panel</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Acadelitas</div>
+        <div class="nav-links" id="navLinks"></div>
+        <div class="nav-user">
+            <span id="navUsername"></span>
+            <span id="navRol" class="badge"></span>
+            <button onclick="salir()" class="btn btn-sm">Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="page-title" id="panelTitulo">Panel Principal</h2>
+        <div id="bienvenidaProfesor" style="display:none;" class="card" style="margin-bottom: 1.5rem;">
+            <p id="bienvenidaTexto"></p>
+        </div>
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="quick-actions" id="quickActions">
+            <h3>Accesos rápidos</h3>
+            <div class="actions-grid" id="actionsGrid"></div>
+        </div>
+    </div>
+
+    <script src="../js/funciones.js"></script>
+    <script src="../js/panel.js"></script>
+</body>
+</html>
