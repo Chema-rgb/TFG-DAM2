@@ -1,3 +1,4 @@
+
 package com.academia.config;
 
 import org.springframework.dao.DataIntegrityViolationException;
