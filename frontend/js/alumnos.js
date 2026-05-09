@@ -59,12 +59,34 @@ async function cargarAlumnos() {
     mostrarAlumnos(todosAlumnos);
 }
 
+document.querySelector('#modalAlumno .modal-close').addEventListener('click', () => {
+    document.querySelectorAll('#formAlumno input, #formAlumno select').forEach(el => el.removeAttribute('disabled'));
+    document.querySelector('#formAlumno button[type="submit"]').style.display = '';
+});
+
 document.getElementById('btnNuevoAlumno')?.addEventListener('click', () => {
     document.getElementById('formAlumno').reset();
     document.getElementById('alumnoId').value = '';
     document.getElementById('modalAlumnoTitle').textContent = 'Nuevo Alumno';
     abrirModal('modalAlumno');
 });
+
+async function verAlumno(id) {
+    const a = await llamarApi('/alumnos/' + id);
+    document.getElementById('alumnoId').value = a.id;
+    document.getElementById('alumnoNombre').value = a.nombre;
+    document.getElementById('alumnoApellidos').value = a.apellidos;
+    document.getElementById('alumnoDni').value = a.dni || '';
+    document.getElementById('alumnoTelefono').value = a.telefono || '';
+    document.getElementById('alumnoDireccion').value = a.direccion || '';
+    document.getElementById('alumnoFechaNacimiento').value = a.fechaNacimiento || '';
+    document.getElementById('alumnoEmail').value = a.email || '';
+    document.getElementById('alumnoEstado').value = a.estado;
+    document.getElementById('modalAlumnoTitle').textContent = 'Ver Alumno';
+    document.querySelectorAll('#formAlumno input, #formAlumno select').forEach(el => el.setAttribute('disabled', true));
+    document.querySelector('#formAlumno button[type="submit"]').style.display = 'none';
+    abrirModal('modalAlumno');
+}
 
 async function editarAlumno(id) {
     const a = await llamarApi('/alumnos/' + id);
