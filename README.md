@@ -34,7 +34,7 @@ La API REST corre en el puerto 8082. La documentación de los endpoints está en
 |---------|-----------|-----|
 | admin | admin123 | ADMIN |
 | profesor1 | prof123 | PROFESOR |
-| alumno1 | alum123 | ALUMNO |
+
 
 ## Tests
 
