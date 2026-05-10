@@ -20,8 +20,8 @@ mvn spring-boot:run
 
 Luego el frontend (en otra terminal):
 ```
-cd frontend
-python3 -m http.server 3000
+ cd frontend
+  npx serve .
 ```
 
 Y abrir http://localhost:3000 en el navegador.
